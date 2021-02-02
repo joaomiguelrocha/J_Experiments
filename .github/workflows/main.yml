@@ -29,9 +29,8 @@ jobs:
           testjob_id: 1
         env: 
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - run: "${{ steps.run_test_job_1.outputs.data }} > test_results.xml"
-      - name: store test results
-        uses: actions/upload-artifact@v2
-        with:
-          name: JunitReport
-          path: test_results.xml
+      - run: "echo response: ${{ steps.run_test_job_1.outputs.data }}"
+      - uses: finnp/create-file-action@master
+        env:
+          FILE_NAME: test_results/JunitReport_1.xml
+          FILE_DATA: "${{ steps.run_test_job_1.outputs.data }}"
