@@ -14,7 +14,7 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "run_tests"
-  run_tests:
+  run_tests1:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -46,5 +46,69 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           files: results.xml
-      
-        
+  
+  run_tests2:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # make a test job call
+      - uses: octokit/request-action@v2.x
+        id: run_test_job_1
+        with:
+          route: GET https://joao-rocha.outsystemscloud.com/BDDTestSuiteManager/rest/v1/TriggerTestRun?TestJobId={testjob_id}&ReportType=junit
+          owner: joaomiguelrocha
+          testjob_id: 2
+        env: 
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: "echo ${{ steps.run_test_job_1.outputs.data }} > results.xml"
+      #- uses: finnp/create-file-action@master
+      #  env:
+      #    FILE_NAME: "JunitReport_1.xml"
+      #    FILE_DATA: "${{ steps.run_test_job_1.outputs.data }}"
+      - name: store results
+        uses: actions/upload-artifact@v2
+        with:
+          name: report
+          path: results.xml
+          
+      - name: publish report
+        uses: EnricoMi/publish-unit-test-result-action@v1.7
+        if: always()
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          files: results.xml
+    
+  run_tests3:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # make a test job call
+      - uses: octokit/request-action@v2.x
+        id: run_test_job_1
+        with:
+          route: GET https://joao-rocha.outsystemscloud.com/BDDTestSuiteManager/rest/v1/TriggerTestRun?TestJobId={testjob_id}&ReportType=junit
+          owner: joaomiguelrocha
+          testjob_id: 3
+        env: 
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: "echo ${{ steps.run_test_job_1.outputs.data }} > results.xml"
+      #- uses: finnp/create-file-action@master
+      #  env:
+      #    FILE_NAME: "JunitReport_1.xml"
+      #    FILE_DATA: "${{ steps.run_test_job_1.outputs.data }}"
+      - name: store results
+        uses: actions/upload-artifact@v2
+        with:
+          name: report
+          path: results.xml
+          
+      - name: publish report
+        uses: EnricoMi/publish-unit-test-result-action@v1.7
+        if: always()
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          files: results.xml
