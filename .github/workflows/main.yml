@@ -29,7 +29,7 @@ jobs:
           testjob_id: 1
         env: 
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - run: "| echo ${{ steps.run_test_job_1.outputs.data }} > results.xml"
+      - run: "echo ${{ steps.run_test_job_1.outputs.data }} > results.xml"
       #- uses: finnp/create-file-action@master
       #  env:
       #    FILE_NAME: "JunitReport_1.xml"
