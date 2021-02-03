@@ -63,7 +63,7 @@ jobs:
           testjob_id: 2
         env: 
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - run: "echo ${{ steps.run_test_job_1.outputs.data }} > results.xml"
+      - run: "echo ${{ steps.run_test_job_1.outputs.data }} > results2.xml"
       #- uses: finnp/create-file-action@master
       #  env:
       #    FILE_NAME: "JunitReport_1.xml"
@@ -80,7 +80,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           report_individual_runs: true
-          files: results.xml
+          files: results2.xml
     
   run_tests3:
     # The type of runner that the job will run on
@@ -97,7 +97,7 @@ jobs:
           testjob_id: 3
         env: 
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - run: "echo ${{ steps.run_test_job_1.outputs.data }} > results.xml"
+      - run: "echo ${{ steps.run_test_job_1.outputs.data }} > results3.xml"
       #- uses: finnp/create-file-action@master
       #  env:
       #    FILE_NAME: "JunitReport_1.xml"
@@ -114,4 +114,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           report_individual_runs: true
-          files: results.xml
+          files: results3.xml
