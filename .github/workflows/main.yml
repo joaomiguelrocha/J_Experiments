@@ -45,6 +45,7 @@ jobs:
         if: always()
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          report_individual_runs: true
           files: results.xml
   
   run_tests2:
@@ -78,6 +79,7 @@ jobs:
         if: always()
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          report_individual_runs: true
           files: results.xml
     
   run_tests3:
@@ -111,4 +113,5 @@ jobs:
         if: always()
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          report_individual_runs: true
           files: results.xml
