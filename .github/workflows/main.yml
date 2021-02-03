@@ -39,5 +39,12 @@ jobs:
         with:
           name: report
           path: results.xml
+          
+      - name: publish report
+        uses: EnricoMi/publish-unit-test-result-action@v1.7
+        if: always()
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          files: results.xml
       
         
