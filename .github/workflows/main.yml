@@ -121,8 +121,12 @@ jobs:
         #  with:
         #    name: combinedReport
         - run: ls -R
+        # debug section
+        - run: "echo ./results.xml"
+        - run: "echo ./results2.xml"
+        - run: "echo ./results3.xml"
         # merge results into main merged report:
-        - run: jrm ./${{ env.RESULTS_PATH}} "./results.xml" "./results2.xml" "./results3.xml"
+        - run: jrm "./${{ env.RESULTS_PATH}}" "./results.xml" "./results2.xml" "./results3.xml"
         # publish merged report
         - name: publish report
           uses: EnricoMi/publish-unit-test-result-action@v1.7
