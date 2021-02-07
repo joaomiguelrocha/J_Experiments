@@ -50,7 +50,7 @@ jobs:
           testjob_id: 2
         env: 
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - run: "echo ${{ steps.run_test_job_1.outputs.data }} > results2.xml"
+      - run: "echo ${{ steps.run_test_job_2.outputs.data }} > results2.xml"
       - name: store results
         uses: actions/upload-artifact@v2
         with:
@@ -71,7 +71,7 @@ jobs:
           testjob_id: 3
         env: 
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - run: "echo ${{ steps.run_test_job_1.outputs.data }} > results3.xml"
+      - run: "echo ${{ steps.run_test_job3_.outputs.data }} > results3.xml"
       
       - name: store results
         uses: actions/upload-artifact@v2
