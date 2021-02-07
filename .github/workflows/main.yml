@@ -59,6 +59,11 @@ jobs:
         with:
           name: report
           path: results.xml
+      # download merged reports artifact 
+      - uses: actions/download-artifact@v2
+        with:
+          name: report
+          path: ${{ env.RESULTS_PATH}}
       # merge results into main merged report:
       - run: jrm ${{ env.RESULTS_PATH}} "${{ env.RESULTS_PATH }}" "results.xml"
       # publish merged report
@@ -115,6 +120,11 @@ jobs:
         with:
           name: report
           path: results2.xml
+      # download merged reports artifact 
+      - uses: actions/download-artifact@v2
+        with:
+          name: report
+          path: ${{ env.RESULTS_PATH}}
       # merge results into main merged report:
       - run: jrm ${{ env.RESULTS_PATH}} "${{ env.RESULTS_PATH }}" "results2.xml"
       # publish merged report
@@ -170,6 +180,11 @@ jobs:
         with:
           name: report
           path: results3.xml
+      # download merged reports artifact 
+      - uses: actions/download-artifact@v2
+        with:
+          name: report
+          path: ${{ env.RESULTS_PATH}}
       # merge results into main merged report:
       - run: jrm ${{ env.RESULTS_PATH}} "${{ env.RESULTS_PATH }}" "results3.xml"
       # publish merged report
