@@ -86,6 +86,14 @@ jobs:
       # setup junit report merger:
       - run: npm install -g junit-report-merger
       
+      #store empty combined_report
+      - run: "echo '' > ${{ env.RESULTS_PATH }}"
+      - name: store results
+        uses: actions/upload-artifact@v2
+        with:
+          name: report
+          path: ${{ env.RESULTS_PATH }}
+      
       # make a test job call
       - uses: octokit/request-action@v2.x
         id: run_test_job_2
