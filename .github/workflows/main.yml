@@ -27,6 +27,13 @@ jobs:
       RESULTS_PATH: combined_report.xml
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      #store empty combined_report
+      - run: "echo '' > ${{ env.RESULTS_PATH }}"
+      - name: store results
+        uses: actions/upload-artifact@v2
+        with:
+          name: report
+          path: ${{ env.RESULTS_PATH }}
       # setup node 
       - uses: actions/checkout@v2
         name: Use Node.js ${{ matrix.node-version }}
@@ -77,6 +84,13 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      #store empty combined_report
+      - run: "echo '' > ${{ env.RESULTS_PATH }}"
+      - name: store results
+        uses: actions/upload-artifact@v2
+        with:
+          name: report
+          path: ${{ env.RESULTS_PATH }}
       # setup node 
       - uses: actions/checkout@v2
         name: Use Node.js ${{ matrix.node-version }}
@@ -85,14 +99,6 @@ jobs:
           node-version: ${{ matrix.node-version }}
       # setup junit report merger:
       - run: npm install -g junit-report-merger
-      
-      #store empty combined_report
-      - run: "echo '' > ${{ env.RESULTS_PATH }}"
-      - name: store results
-        uses: actions/upload-artifact@v2
-        with:
-          name: report
-          path: ${{ env.RESULTS_PATH }}
       
       # make a test job call
       - uses: octokit/request-action@v2.x
@@ -132,6 +138,13 @@ jobs:
       RESULTS_PATH: combined_report.xml
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      #store empty combined_report
+      - run: "echo '' > ${{ env.RESULTS_PATH }}"
+      - name: store results
+        uses: actions/upload-artifact@v2
+        with:
+          name: report
+          path: ${{ env.RESULTS_PATH }}
       # setup node 
       - uses: actions/checkout@v2
         name: Use Node.js ${{ matrix.node-version }}
