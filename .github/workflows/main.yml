@@ -93,7 +93,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
         #store empty combined_report
-        - run: "echo '' > ${{ env.RESULTS_PATH }}"
+        - run: "echo ' ' > ${{ env.RESULTS_PATH }}"
         - name: store results
           uses: actions/upload-artifact@v2
           with:
@@ -117,7 +117,9 @@ jobs:
         - uses: actions/download-artifact@v2
           with:
             name: report3
-            #path: ${{ env.RESULTS_PATH}}
+        - uses: actions/download-artifact@v2
+          with:
+            name: combinedReport
         - run: ls -R
         # merge results into main merged report:
         - run: jrm ${{ env.RESULTS_PATH}} "results.xml" "results2.xml" "results3.xml"
