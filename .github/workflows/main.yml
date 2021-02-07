@@ -122,7 +122,7 @@ jobs:
         #    name: combinedReport
         - run: ls -R
         # merge results into main merged report:
-        - run: jrm ${{ env.RESULTS_PATH}} "./results.xml" "./results2.xml" "./results3.xml"
+        - run: jrm ./${{ env.RESULTS_PATH}} "./results.xml" "./results2.xml" "./results3.xml"
         # publish merged report
         - name: publish report
           uses: EnricoMi/publish-unit-test-result-action@v1.7
@@ -130,4 +130,4 @@ jobs:
           with:
             github_token: ${{ secrets.GITHUB_TOKEN }}
             report_individual_runs: true
-            files: ${{ env.RESULTS_PATH }}
+            files: ./${{ env.RESULTS_PATH }}
