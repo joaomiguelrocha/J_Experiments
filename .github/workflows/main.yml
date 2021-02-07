@@ -80,7 +80,9 @@ jobs:
           path: results3.xml
 
   merge_and_publish_reports:
+    # only trigger job once previous jobs have all finished
     needs: [run_tests1, run_tests2, run_tests3]
+    
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     # example from https://github.com/bhovhannes/junit-report-merger/blob/master/.github/workflows/main.yml
@@ -92,21 +94,17 @@ jobs:
       RESULTS_PATH: combinedReport.xml
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-        #store empty combined_report
-        #- run: "echo '' > ${{ env.RESULTS_PATH }}"
-        #- name: store results
-        #  uses: actions/upload-artifact@v2
-        #  with:
-        #    name: combinedReport
-        #    path: ${{ env.RESULTS_PATH }}
         # setup node 
         - uses: actions/checkout@v2
           name: Use Node.js ${{ matrix.node-version }}
         - uses: actions/setup-node@v2
           with:
             node-version: ${{ matrix.node-version }}
+        
         # setup junit report merger:
+        # source https://github.com/bhovhannes/junit-report-merger
         - run: npm install -g junit-report-merger
+        
         # download testRun reports      
         - uses: actions/download-artifact@v2
           with:
@@ -122,11 +120,13 @@ jobs:
         #    name: combinedReport
         - run: ls -R
         # debug section
-        - run: "cat ./results.xml"
-        - run: "cat ./results2.xml"
-        - run: "cat ./results3.xml"
+        #- run: "cat ./results.xml"
+        #- run: "cat ./results2.xml"
+        #- run: "cat ./results3.xml"
+        
         # merge results into main merged report:
         - run: jrm ${{ env.RESULTS_PATH}} "./results.xml" "./results2.xml" "./results3.xml"
+        
         # publish merged report
         - name: publish report
           uses: EnricoMi/publish-unit-test-result-action@v1.7
