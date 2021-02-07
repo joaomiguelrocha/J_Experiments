@@ -122,9 +122,9 @@ jobs:
         #    name: combinedReport
         - run: ls -R
         # debug section
-        - run: "echo cat ./results.xml"
-        - run: "echo cat ./results2.xml"
-        - run: "echo cat ./results3.xml"
+        - run: "cat ./results.xml"
+        - run: "cat ./results2.xml"
+        - run: "cat ./results3.xml"
         # merge results into main merged report:
         - run: jrm "${{ env.RESULTS_PATH}}" "./results.xml" "./results2.xml" "./results3.xml"
         # publish merged report
