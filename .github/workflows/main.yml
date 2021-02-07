@@ -21,7 +21,7 @@ jobs:
     # example from https://github.com/bhovhannes/junit-report-merger/blob/master/.github/workflows/main.yml
     strategy:
       matrix:
-        node-version: [10.x, 12.x, 14.x]
+        node-version: [14.x]
     
     env:
       RESULTS_PATH: combined_report.xml
@@ -70,7 +70,7 @@ jobs:
     # example from https://github.com/bhovhannes/junit-report-merger/blob/master/.github/workflows/main.yml
     strategy:
       matrix:
-        node-version: [10.x, 12.x, 14.x]
+        node-version: [14.x]
     
     env:
       RESULTS_PATH: combined_report.xml
@@ -118,7 +118,7 @@ jobs:
     # example from https://github.com/bhovhannes/junit-report-merger/blob/master/.github/workflows/main.yml
     strategy:
       matrix:
-        node-version: [10.x, 12.x, 14.x]
+        node-version: [14.x]
     
     env:
       RESULTS_PATH: combined_report.xml
