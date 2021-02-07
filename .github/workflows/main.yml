@@ -71,7 +71,7 @@ jobs:
           testjob_id: 3
         env: 
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - run: "echo ${{ steps.run_test_job3_.outputs.data }} > results3.xml"
+      - run: "echo ${{ steps.run_test_job_3_.outputs.data }} > results3.xml"
       
       - name: store results
         uses: actions/upload-artifact@v2
@@ -126,7 +126,7 @@ jobs:
         - run: "cat ./results2.xml"
         - run: "cat ./results3.xml"
         # merge results into main merged report:
-        - run: jrm "${{ env.RESULTS_PATH}}" "./results.xml" "./results2.xml" "./results3.xml"
+        - run: jrm ${{ env.RESULTS_PATH}} "./results.xml" "./results2.xml" "./results3.xml"
         # publish merged report
         - name: publish report
           uses: EnricoMi/publish-unit-test-result-action@v1.7
