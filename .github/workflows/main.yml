@@ -17,59 +17,78 @@ jobs:
   run_tests1:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    
+    # example from https://github.com/bhovhannes/junit-report-merger/blob/master/.github/workflows/main.yml
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x, 14.x]
+    
     env:
-      RESULTS_PATH: results.xml
+      RESULTS_PATH: combined_report.xml
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      # setup node 
+      - uses: actions/checkout@v2
+        name: Use Node.js ${{ matrix.node-version }}
+      - uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+      # setup junit report merger:
+      - run: npm install -g junit-report-merger
+      
       # make a test job call
       - uses: octokit/request-action@v2.x
         id: run_test_job_1
         with:
           route: GET https://joao-rocha.outsystemscloud.com/BDDTestSuiteManager/rest/v1/TriggerTestRun?TestJobId={testjob_id}&ReportType=junit
-          owner: joaomiguelrocha
+          # owner: joaomiguelrocha
           testjob_id: 1
         env: 
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: "echo ${{ steps.run_test_job_1.outputs.data }} > results.xml"
-      #- uses: finnp/create-file-action@master
-      #  env:
-      #    FILE_NAME: "JunitReport_1.xml"
-      #    FILE_DATA: "${{ steps.run_test_job_1.outputs.data }}"
+      # store results as artifact
       - name: store results
         uses: actions/upload-artifact@v2
         with:
           name: report
           path: results.xml
-          
-      #- name: publish report
-      #  uses: EnricoMi/publish-unit-test-result-action@v1.7
-      #  if: always()
-      #  with:
-      #    github_token: ${{ secrets.GITHUB_TOKEN }}
-      #    report_individual_runs: true
-      #    files: results.xml
-      - name: Generate Report
-        id: xunit-viewer
-        uses: AutoModality/action-xunit-viewer@v1
+      # merge results into main merged report:
+      - run: jrm ${{ env.RESULTS_PATH}} "${{ env.RESULTS_PATH }}" "results.xml"
+      # publish merged report
+      - name: publish report
+        uses: EnricoMi/publish-unit-test-result-action@v1.7
+        if: always()
         with:
-          results: ${{ env.RESULTS_PATH }}
-      - name: The generated report
-        run: echo "The report is ${{ steps.xunit-viewer.outputs.report-file }}"    
-      - name: Attach the report
-        uses: actions/upload-artifact@v1
-        with:
-          name: test-reports-1
-          path: ${{ steps.xunit-viewer.outputs.report-dir }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          report_individual_runs: true
+          files: ${{ env.RESULTS_PATH }}
+      
   
   run_tests2:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    # example from https://github.com/bhovhannes/junit-report-merger/blob/master/.github/workflows/main.yml
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x, 14.x]
+    
+    env:
+      RESULTS_PATH: combined_report.xml
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      # setup node 
+      - uses: actions/checkout@v2
+        name: Use Node.js ${{ matrix.node-version }}
+      - uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+      # setup junit report merger:
+      - run: npm install -g junit-report-merger
+      
       # make a test job call
       - uses: octokit/request-action@v2.x
-        id: run_test_job_1
+        id: run_test_job_2
         with:
           route: GET https://joao-rocha.outsystemscloud.com/BDDTestSuiteManager/rest/v1/TriggerTestRun?TestJobId={testjob_id}&ReportType=junit
           owner: joaomiguelrocha
@@ -77,33 +96,46 @@ jobs:
         env: 
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: "echo ${{ steps.run_test_job_1.outputs.data }} > results2.xml"
-      #- uses: finnp/create-file-action@master
-      #  env:
-      #    FILE_NAME: "JunitReport_1.xml"
-      #    FILE_DATA: "${{ steps.run_test_job_1.outputs.data }}"
       - name: store results
         uses: actions/upload-artifact@v2
         with:
           name: report
           path: results2.xml
-          
+      # merge results into main merged report:
+      - run: jrm ${{ env.RESULTS_PATH}} "${{ env.RESULTS_PATH }}" "results2.xml"
+      # publish merged report
       - name: publish report
         uses: EnricoMi/publish-unit-test-result-action@v1.7
         if: always()
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           report_individual_runs: true
-          files: results2.xml
+          files: ${{ env.RESULTS_PATH }}
     
   run_tests3:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
+    # example from https://github.com/bhovhannes/junit-report-merger/blob/master/.github/workflows/main.yml
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x, 14.x]
+    
+    env:
+      RESULTS_PATH: combined_report.xml
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      # setup node 
+      - uses: actions/checkout@v2
+        name: Use Node.js ${{ matrix.node-version }}
+      - uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+      # setup junit report merger:
+      - run: npm install -g junit-report-merger
+      
       # make a test job call
       - uses: octokit/request-action@v2.x
-        id: run_test_job_1
+        id: run_test_job_3
         with:
           route: GET https://joao-rocha.outsystemscloud.com/BDDTestSuiteManager/rest/v1/TriggerTestRun?TestJobId={testjob_id}&ReportType=junit
           owner: joaomiguelrocha
@@ -111,20 +143,19 @@ jobs:
         env: 
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: "echo ${{ steps.run_test_job_1.outputs.data }} > results3.xml"
-      #- uses: finnp/create-file-action@master
-      #  env:
-      #    FILE_NAME: "JunitReport_1.xml"
-      #    FILE_DATA: "${{ steps.run_test_job_1.outputs.data }}"
+      
       - name: store results
         uses: actions/upload-artifact@v2
         with:
           name: report
           path: results3.xml
-          
+      # merge results into main merged report:
+      - run: jrm ${{ env.RESULTS_PATH}} "${{ env.RESULTS_PATH }}" "results3.xml"
+      # publish merged report
       - name: publish report
         uses: EnricoMi/publish-unit-test-result-action@v1.7
         if: always()
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           report_individual_runs: true
-          files: results3.xml
+          files: ${{ env.RESULTS_PATH }}
