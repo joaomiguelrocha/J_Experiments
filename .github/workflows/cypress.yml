@@ -11,14 +11,14 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-  # A workflow run is made up of one or more jobs that can run sequentially or in parallel
-  jobs:
-    cypress-run:
-    runs-on: ubuntu-16.04
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Cypress run
-        uses: cypress-io/github-action@v1
-        with:
-          command: npm run test:dashboard
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  cypress-run:
+  runs-on: ubuntu-16.04
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Cypress run
+      uses: cypress-io/github-action@v1
+      with:
+        command: npm run test:dashboard
