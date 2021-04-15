@@ -1,0 +1,30 @@
+{
+  "viewportWidth": 1280,
+  "viewportHeight": 720,
+  "baseUrl": "https://joao-rocha.outsystemscloud.com/",
+  "projectId": "cezcnk",
+  "retries": {
+    "runMode": 2,
+    "openMode": 1
+  },
+  "watchForFileChanges" : false,
+  "defaultCommandTimeout": 4000,
+  "execTimeout" : 60000,
+  "pageLoadTimeout" : 60000,
+  "requestTimeout" : 5000,
+  "responseTimeout" : 30000,
+  "downloadsFolder" : "cypress/downloads",
+  "fixturesFolder" : "cypress/fixtures",
+  "integrationFolder" : "cypress/integration",
+  "screenshotsFolder" : "cypress/screenshots",
+  "screenshotOnRunFailure" : true,
+  "trashAssetsBeforeRuns" : true,
+  "videosFolder" : "cypress/videos",
+  "video" : true,
+  "videoUploadOnPasses" : false,
+  "reporter": "junit",
+  "reporterOptions": {
+    "mochaFile": "results/my-test-output.xml",
+    "toConsole": true
+  }
+}

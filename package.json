@@ -1,0 +1,31 @@
+{
+  "name": "J_Experiments",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "cypress": "cypress open",
+    "test:chrome": "cypress run --browser chrome --headless",
+    "test:edge": "cypress run --browser edge --headless",
+    "test:firefox": "cypress run --browser firefox --headless",
+    "test": "cypress run",
+    "test:chrome:dashboard": "cypress run --browser chrome --headless --record --key c5f90e41-9fb2-4af5-8a1a-b24ad10935a2",
+    "test:edge:dashboard": "cypress run --browser edge --headless --record --key c5f90e41-9fb2-4af5-8a1a-b24ad10935a2",
+    "test:firefox:dashboard": "cypress run --browser firefox --headless --record --key c5f90e41-9fb2-4af5-8a1a-b24ad10935a2",
+    "test:dashboard": "cypress run --record --key c5f90e41-9fb2-4af5-8a1a-b24ad10935a2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joaomiguelrocha/J_Experiments.git"
+  },
+  "keywords": [],
+  "author": "J.Rocha",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joaomiguelrocha/J_Experiments/issues"
+  },
+  "homepage": "https://github.com/joaomiguelrocha/J_Experiments#readme",
+  "devDependencies": {
+    "cypress": "^7.1.0"
+  }
+}
