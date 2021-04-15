@@ -4,8 +4,8 @@
     "companyName":"Cypress io",
     "companyPhone":"(123) 456-7788",
     "companyEmail":"cypress@io.com",
-    "username" : "van hallen",
-    "password" : "some random password",
+    "username" : "aaron.sullivan",
+    "password" : "outsystems",
     "expectedPopupText" : "This is text inside a popup. My Id is TextTestSpan. Try and capture me =)",
     "textToTypeInPopup" : "AWESOME TEXT",
     "expectedPopupCloseMessage" : "No awesome stuff here, sorry"
