@@ -1,1 +1,1 @@
-# Experiments with gitflow & actions
+# Experiments playground repository
