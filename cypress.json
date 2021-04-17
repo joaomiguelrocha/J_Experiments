@@ -1,7 +1,7 @@
 {
   "viewportWidth": 1280,
   "viewportHeight": 720,
-  "baseUrl": "https://joao-rocha.outsystemscloud.com/",
+  "baseUrl": "https://jj-sutdies.outsystemscloud.com/",
   "projectId": "cezcnk",
   "retries": {
     "runMode": 2,
@@ -15,7 +15,7 @@
   "responseTimeout" : 30000,
   "downloadsFolder" : "cypress/downloads",
   "fixturesFolder" : "cypress/fixtures",
-  "integrationFolder" : "cypress/integration",
+  "integrationFolder" : "cypress/test-spec-files",
   "screenshotsFolder" : "cypress/screenshots",
   "screenshotOnRunFailure" : true,
   "trashAssetsBeforeRuns" : true,
@@ -24,7 +24,7 @@
   "videoUploadOnPasses" : false,
   "reporter": "junit",
   "reporterOptions": {
-    "mochaFile": "results/my-test-output.xml",
+    "mochaFile": "results/cypress-end-to-end-test-report.xml",
     "toConsole": true
   }
 }
