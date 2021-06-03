@@ -11,7 +11,7 @@
   "defaultCommandTimeout": 4000,
   "execTimeout" : 60000,
   "pageLoadTimeout" : 60000,
-  "requestTimeout" : 5000,
+  "requestTimeout" : 60000,
   "responseTimeout" : 30000,
   "downloadsFolder" : "cypress/downloads",
   "fixturesFolder" : "cypress/fixtures",
