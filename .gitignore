@@ -3,3 +3,5 @@ videos
 /results
 /local-data.txt
 screenshots
+/OutSystems/apps
+/cypress/fixtures/login-feature.json
