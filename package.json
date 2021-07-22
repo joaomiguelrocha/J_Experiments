@@ -9,10 +9,10 @@
     "test:edge": "cypress run --browser edge",
     "test:firefox": "cypress run --browser firefox",
     "test": "cypress run",
-    "ci:chrome:dashboard": "cypress run --browser chrome --headless --record --key cezcnk",
-    "ci:edge:dashboard": "cypress run --browser edge --headless --record --key cezcnk",
-    "ci:firefox:dashboard": "cypress run --browser firefox --headless --record --key cezcnk",
-    "ci:dashboard": "cypress run --record --key cezcnk"
+    "ci:chrome:dashboard": "cypress run --browser chrome --headless --record --key c5f90e41-9fb2-4af5-8a1a-b24ad10935a2",
+    "ci:edge:dashboard": "cypress run --browser edge --headless --record --key c5f90e41-9fb2-4af5-8a1a-b24ad10935a2",
+    "ci:firefox:dashboard": "cypress run --browser firefox --headless --record --key c5f90e41-9fb2-4af5-8a1a-b24ad10935a2",
+    "ci:dashboard": "cypress run --record --key c5f90e41-9fb2-4af5-8a1a-b24ad10935a2"
   },
   "repository": {
     "type": "git",
