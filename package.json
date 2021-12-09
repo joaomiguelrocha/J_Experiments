@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/joaomiguelrocha/J_Experiments#readme",
   "devDependencies": {
-    "cypress": "^8.0.0"
+    "@playwright/test": "^1.14.1",
+    "cypress": "^9.1.1"
   }
 }

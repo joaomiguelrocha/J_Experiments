@@ -77,3 +77,13 @@ export function getByOsId_inIframe(iframeScreen, osId) {
  export function getByElementOsIdAndIndexWithAnchor_inIframe(iframeScreen, anchorOsId, htmlElem, osId, index) {
      return getIframeBody(iframeScreen).find(`*[Id$=${anchorOsId}] ${htmlElem}[Id$=${osId}]:nth-child${index + 1}`)
  }
+
+ // ###### Confirm Dialog abstractions ###############################################
+
+ export function confimDialogOk(){
+    cy.on('window:confirm', () => true);
+ }
+
+ export function confimDialogCancel(){
+    cy.on('window:confirm', () => false);
+ }
