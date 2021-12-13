@@ -3,7 +3,7 @@
 import * as loginPage from "../test-management-tool/page-objects/login-page"
 import * as topMenu from "../test-management-tool/page-objects/top-menu"
 
-describe('login feature', () => {
+describe('login feature (Smoke)', () => {
     var data = {}
     before(()=>{
         cy.fixture('login-feature.json').then((testData) => {

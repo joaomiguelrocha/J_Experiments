@@ -11,6 +11,13 @@ const totalExecutedTests = "*[data-testid=totalExecutedTests]"
 const totalPassedTests = "*[data-testid=totalPassedTests]"
 const totalFailedTests = "*[data-testid=totalFailedTests]"
 
+const popupJobName = "*[data-testid=jobNameInput]"
+const popupApiKey = "*[data-testid=jobKeyInput]"
+const popupVersion = "*[data-testid=jobVersionInput]"
+const popupTypeDropdown = "*[data-testid=jobTypeDropdown]"
+const saveJobBtn = "*[data-testid=saveJobBtn]"
+const popupCloseLink = "*[data-testid=popupCloseLink]"
+
 const searchJobInput = "*[data-testid=searchJobInput]"
 const jobsList = "*[data-testid=jobsList]"
 const jobName = "*[data-testid=jobName]"
@@ -77,4 +84,42 @@ export function clickRefreshPage(){
     cy.get(refreshPage).should("be.visible")
     cy.get(refreshPage).should("be.enabled")
     cy.get(refreshPage).click()
+}
+
+export function assertDefaultTestJobDataForm(){
+    cy.get(popupJobName).should("be.visible")
+    cy.get(popupJobName).should("be.enabled")
+    cy.get(popupJobName).should("be.empty")
+
+    cy.get(popupApiKey).should("be.visible")
+    cy.get(popupApiKey).should("be.enabled")
+    cy.get(popupApiKey).should("be.empty")
+
+    cy.get(popupVersion).should("be.visible")
+    cy.get(popupVersion).should("be.enabled")
+    cy.get(popupVersion).should("be.empty")
+    
+    cy.get(popupTypeDropdown + " select").should("be.visible")
+    cy.get(popupTypeDropdown + " select").should("be.enabled")
+    cy.get(popupTypeDropdown + " select option:selected").should("have.text", "Component")
+}
+
+export function fillTestJobData(jobName, apiKey, version, type){
+    
+    cy.get(popupJobName).type(jobName)
+    cy.get(popupApiKey).type(apiKey)
+    cy.get(popupVersion).type(version)
+    cy.get(popupTypeDropdown + " select").select(type)
+    cy.get(popupTypeDropdown + " select option:selected").should("have.text", type)
+}
+
+export function saveTestJob(){
+    cy.get(saveJobBtn).should("be.visible")
+    cy.get(saveJobBtn).should("be.enabled")
+    cy.get(saveJobBtn).click()
+}
+
+export function closePopup(){
+    cy.get(popupCloseLink).should("be.visible")
+    cy.get(popupCloseLink).click()
 }

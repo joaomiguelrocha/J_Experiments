@@ -1,11 +1,11 @@
 {
-  "name": "JJ_Experiments",
+  "name": "jj-experiments",
   "version": "1.0.0",
-  "description": "",
+  "description": "J's experiments with cypress",
   "main": "index.js",
   "scripts": {
     "cypress": "cypress open",
-    "test:chrome": "cypress run --browser chrome",
+    "test:chrome": "cypress run --browser chrome --env grep=Smoke",
     "test:edge": "cypress run --browser edge",
     "test:firefox": "cypress run --browser firefox",
     "test": "cypress run",
@@ -27,6 +27,7 @@
   "homepage": "https://github.com/joaomiguelrocha/J_Experiments#readme",
   "devDependencies": {
     "@playwright/test": "^1.14.1",
-    "cypress": "^9.1.1"
+    "cypress": "^9.1.1",
+    "cypress-select-tests": "^1.7.1"
   }
 }

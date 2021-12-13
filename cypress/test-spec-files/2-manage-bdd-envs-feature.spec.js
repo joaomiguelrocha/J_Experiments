@@ -5,7 +5,8 @@ import * as topMenu from "../test-management-tool/page-objects/top-menu"
 import * as homepage from "../test-management-tool/page-objects/homepage"
 import * as bddEnvironmentsPage from "../test-management-tool/page-objects/bdd-environments"
 
-describe('Manage BDD Environments journeys', () => {
+
+describe('Manage BDD Environments journeys (Smoke)', () => {
     var data = {}
     before(()=>{
         cy.fixture('login-feature.json').then((testData) => {
