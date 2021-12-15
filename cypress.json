@@ -24,7 +24,7 @@
   "videoUploadOnPasses" : false,
   "reporter": "junit",
   "reporterOptions": {
-    "mochaFile": "results/cypress-end-to-end-test-report.xml",
+    "mochaFile": "results/junit.[hash].xml",
     "toConsole": true
   }
 }
