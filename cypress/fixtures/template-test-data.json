@@ -1,8 +1,12 @@
 {
-    "username":"",
-    "password":"",
-    "displayName":"",
-    "bddEnvName": "",
-    "bddEnvUrl": "",
-    "":""
+    "username":"test.qa@mail.dom",
+    "password":"t3st3r@q@",
+    "displayName":"QA Manager",
+    "bddEnvName": "XPTO",
+    "bddEnvUrl": "https://www.xpto.outsystems.com",
+    "testProjName":"Dumb & Dumber",
+    "testJobName": "Dumb",
+    "testJobKey": "Dumber",
+    "testJobVersion" : "pre-alpha",
+    "testJobType" : "Integration"
 }

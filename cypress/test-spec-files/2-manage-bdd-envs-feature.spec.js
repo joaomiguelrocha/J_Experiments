@@ -9,7 +9,7 @@ import * as bddEnvironmentsPage from "../test-management-tool/page-objects/bdd-e
 describe('Manage BDD Environments journeys (Smoke)', () => {
     var data = {}
     before(()=>{
-        cy.fixture('login-feature.json').then((testData) => {
+        cy.fixture('template-test-data.json').then((testData) => {
             data = testData
         })
     })

@@ -6,7 +6,7 @@ import * as topMenu from "../test-management-tool/page-objects/top-menu"
 describe('login feature (Smoke)', () => {
     var data = {}
     before(()=>{
-        cy.fixture('login-feature.json').then((testData) => {
+        cy.fixture('template-test-data.json').then((testData) => {
             data = testData
         })
     })

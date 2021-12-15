@@ -10,7 +10,7 @@ import * as testJobDetailsPage from "../test-management-tool/page-objects/testjo
 describe('Manage BDD Test Projects homepage journeys', () => {
     var data = {}
     before(()=>{
-        cy.fixture('login-feature.json').then((testData) => {
+        cy.fixture('template-test-data.json').then((testData) => {
             data = testData
         })
 
